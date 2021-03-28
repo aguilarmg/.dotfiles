@@ -1,0 +1,1 @@
+/home/otareg/.systemconfig/.vim
