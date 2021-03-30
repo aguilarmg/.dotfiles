@@ -1,6 +1,9 @@
 # git
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 source ~/bin/.git-prompt.sh
+# https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
+source ~/bin/.git-completion.bash
+
 
 # Config git prompt
 export GIT_PS1_SHOWDIRTYSTATE=1
@@ -49,3 +52,7 @@ PROMPT_DIRTRIM=3
 
 export PS1="${COLOR_CYAN}\\u${COLOR_DEFAULT}${COLOR_GREEN}:${COLOR_DEFAULT}${COLOR_YELLOW} \W${COLOR_DEFAULT}${COLOR_RED}$(__git_ps1 " (%s)")${COLOR_DEFAULT} ${COLOR_CYAN}> ${COLOR_DEFAULT}"
 export PS1='\[\e[36m\]\u\[\e[39m\]\[\e[32m\]: \[\e[39m\]\[\e[33m\]\W\[\e[39m\]\[\e[31m\]$(__git_ps1 "(%s)")\[\e[0m\] \[\e[36m\]> \[\e[39m\]'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
