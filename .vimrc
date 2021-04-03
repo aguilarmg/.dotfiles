@@ -28,11 +28,26 @@ Plugin 'airblade/vim-gitgutter'
 " Plugin for alignment
 Plugin 'godlygeek/tabular'
 
+" Plugin for circom syntax highlighting
+Plugin 'iden3/vim-circom-syntax'
+
+" Plugin for rust
+Plugin 'rust-lang/rust.vim'
+
+" Palenight colour scheme
+Plugin 'drewtempelmeyer/palenight.vim'
+
+" deoplete autocompletion and its dependencies
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" Colorscheme 
-colorscheme ron
+" Colorscheme settings
+set background=dark
+colorscheme palenight
 " Map leader to ;
 let mapleader = ";"
 
@@ -42,9 +57,9 @@ set wrap
 " Text stuff
 set textwidth=99
 set formatoptions=tcqrn1
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set smarttab
 set expandtab
 set noshiftround
@@ -133,13 +148,16 @@ nnoremap <leader>e :edit **/*
 nnoremap <leader>v :vsp **/*
 nnoremap <leader>o :sp **/*
 
-" Highlight current line, but only in active window
-" augroup CursorLineOnlyInActiveWindow
-"   autocmd!
-"   autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-"   autocmd WinLeave * setlocal nocursorline
-" augroup END
-
 " Airline config
 let g:airline_section_y = 'BN: %{bufnr("%")}'
 let g:airline#extensions#tabline#enabled = 0
+let g:airline_theme = "palenight"
+
+" Palenight config
+let g:palenight_terminal_italics=1
+
+" Deoplete config <c-n> to autocomplete
+let g:deoplete#enable_at_startup = 1
+
+" Rust plugin
+let g:rustfmt_autosave = 1

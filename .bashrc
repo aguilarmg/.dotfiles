@@ -48,10 +48,28 @@ COLOR_BLUE='\[\e[34m\]'
 COLOR_MAGENTA='\[\e[35m\]'
 COLOR_CYAN='\[\e[36m\]'
 
-PROMPT_DIRTRIM=3
+# Function to shorten the path that gets printed to the bash prompt.
+_dir_chomp () {
+    local IFS=/ c=1 n d
+    local p=(${1/#$HOME/\~}) r=${p[*]}
+    local s=${#r}
+    while ((s>$2&&c<${#p[*]}-1))
+    do
+        d=${p[c]}
+        n=1;[[ $d = .* ]]&&n=2
+        ((s-=${#d}-n))
+        p[c++]=${d:0:n}
+    done
+    echo "${p[*]}"
+}
 
-export PS1="${COLOR_CYAN}\\u${COLOR_DEFAULT}${COLOR_GREEN}:${COLOR_DEFAULT}${COLOR_YELLOW} \W${COLOR_DEFAULT}${COLOR_RED}$(__git_ps1 " (%s)")${COLOR_DEFAULT} ${COLOR_CYAN}> ${COLOR_DEFAULT}"
-export PS1='\[\e[36m\]\u\[\e[39m\]\[\e[32m\]: \[\e[39m\]\[\e[33m\]\W\[\e[39m\]\[\e[31m\]$(__git_ps1 "(%s)")\[\e[0m\] \[\e[36m\]> \[\e[39m\]'
+# export PS1="${COLOR_CYAN}\\u${COLOR_DEFAULT}${COLOR_GREEN}:${COLOR_DEFAULT}${COLOR_YELLOW} \W${COLOR_DEFAULT}${COLOR_RED}$(__git_ps1 " (%s)")${COLOR_DEFAULT} ${COLOR_CYAN}> ${COLOR_DEFAULT}"
+# bash prompt that only lists current dir.
+# export PS1='\[\e[36m\]\u\[\e[39m\]\[\e[32m\]: \[\e[39m\]\[\e[33m\]\W\[\e[39m\]\[\e[31m\]$(__git_ps1 "(%s)")\[\e[0m\] \[\e[36m\]> \[\e[39m\]'
+# bash prompt that includes relative path to home dir.
+# export PS1='\[\e[36m\]\u\[\e[39m\]\[\e[32m\]: \[\e[39m\]\[\e[33m\]\w\[\e[39m\]\[\e[31m\]$(__git_ps1 "(%s)")\[\e[0m\] \[\e[36m\]> \[\e[39m\]'
+# bash prompt that includes path shortener.
+export PS1='\[\e[36m\]\u\[\e[39m\]\[\e[32m\]: \[\e[39m\]\[\e[33m\]$(_dir_chomp "$(pwd)" 5)\[\e[39m\]\[\e[31m\]$(__git_ps1 "(%s)")\[\e[0m\] \[\e[36m\]> \[\e[39m\]'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -1,6 +1,11 @@
-alias ls='ls --color'
-alias ll='ls -lua'
-alias la='ls -A'
+# Alias for exa
+alias exa='exa-linux-x86_64'
+
+# Use exa for ls.
+alias ls='exa -h'
+alias l='exa -F'
+alias la='exa -a'
+alias ll='exa -abghHl'
 
 alias grep='grep --color'
 alias fgrep='fgrep --color'
@@ -11,6 +16,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 alias python='python3'
+alias pip='pip3'
 
 # Make a directory and cd into it
 mkcd() {
