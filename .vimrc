@@ -161,3 +161,6 @@ let g:deoplete#enable_at_startup = 1
 
 " Rust plugin
 let g:rustfmt_autosave = 1
+
+" Don't really care for netrw history
+let g:netrw_dirhistmax = 0
