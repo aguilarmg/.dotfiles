@@ -1,3 +1,19 @@
 [user]
 	email = aguilmig@gmail.com
 	name = Miguel Aguilar
+[init]
+    defaultBranch = main
+
+[color] 
+    ui = auto
+
+[core]
+	pager = npx git-split-diffs --color | less -RFX
+	editor = vim
+
+[alias]
+    st = status -sb
+    br = branch -vv
+    bra = branch -vv --all
+    di = diff --stat
+    lg = log --oneline
