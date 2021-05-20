@@ -90,3 +90,11 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Add paths for TexLive
+export MANPATH="/usr/local/texlive/2021/texmf-dist/doc/man:$MANPATH"
+export INFOPATH="/usr/local/texlive/2021/texmf-dist/doc/info:$INFOPATH"
+export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
