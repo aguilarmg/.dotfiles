@@ -13,41 +13,41 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" git plugins
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-" plugin for colored status bar
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
-" Plugin for Solidity syntax highlighting
-Plugin 'tomlion/vim-solidity'
-
 " Plugin for gitgutter
 Plugin 'airblade/vim-gitgutter'
 
-" Plugin for alignment
-Plugin 'godlygeek/tabular'
+" plugin for colored status bar
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'drewtempelmeyer/palenight.vim'
 
+" Syntax highlighting plugins
+" Plugin for Solidity syntax highlighting
+Plugin 'tomlion/vim-solidity'
 " Plugin for circom syntax highlighting
 Plugin 'iden3/vim-circom-syntax'
-
 " Plugin for rust
 Plugin 'rust-lang/rust.vim'
-
-" Palenight colour scheme
-Plugin 'drewtempelmeyer/palenight.vim'
 
 " deoplete autocompletion and its dependencies
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
 
+" Vim colourscheme
+Plugin 'ajmwagar/vim-deus'
+Plugin 'jaredgorski/spacecamp'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Colorscheme settings
+set t_Co=256
+set termguicolors
 set background=dark
-colorscheme palenight
+colorscheme spacecamp
 " Map leader to ;
 let mapleader = ";"
 
@@ -62,6 +62,7 @@ set shiftwidth=4
 set softtabstop=4
 set smarttab
 set expandtab
+set autoindent
 set noshiftround
 
 " Display 5 lines above/beow the cursor when scrolling with a mouse
@@ -81,17 +82,10 @@ set updatetime=100
 " Highlight matching pairs of brackers. Use the '%' chatacter to jump between them.
 set matchpairs+=<:>
 
-" Display different types of white spaces
-" set list
-" set listchars=
-
 " Set line numbers
 set nonumber
 " Set relative line numbers
 set norelativenumber
-
-" Set status line display
-" set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
 
 " Encoding
 set encoding=utf-8
@@ -111,6 +105,8 @@ nnoremap <silent> <leader>rv :so $MYVIMRC<CR>
 
 " Map kj to <Esc>
 inoremap <silent> kj <Esc>
+" Map C-[ to <Esc>
+noremap <silent> <C-[> <Esc>
 
 " File writing and closing mappings 
 nnoremap <silent> <leader>w :w<CR>
@@ -152,7 +148,6 @@ nnoremap <leader>o :sp **/*
 let g:airline_section_y = 'BN: %{bufnr("%")}'
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_theme = "palenight"
-
 " Palenight config
 let g:palenight_terminal_italics=1
 
