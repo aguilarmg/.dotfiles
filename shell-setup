@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -x
+set -e
+
+function pull_repo() {
+    cd $1
+    git pull
+    cd -
+}
+
+# Vundle setup
+if [[ ! -a $HOME/.vim/bundle/Vundle.vim ]]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+fi
+pull_repo $HOME/.vim/bundle/Vundle.vim
+
+# Rust setup
+if [[ ! -d $HOME/.rustup ]]; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
