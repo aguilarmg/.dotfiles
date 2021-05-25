@@ -10,8 +10,6 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 
-TERM=xterm-256color
-
 # Append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -63,11 +61,6 @@ _dir_chomp () {
     echo "${p[*]}"
 }
 
-# export PS1="${COLOR_CYAN}\\u${COLOR_DEFAULT}${COLOR_GREEN}:${COLOR_DEFAULT}${COLOR_YELLOW} \W${COLOR_DEFAULT}${COLOR_RED}$(__git_ps1 " (%s)")${COLOR_DEFAULT} ${COLOR_CYAN}> ${COLOR_DEFAULT}"
-# bash prompt that only lists current dir.
-# export PS1='\[\e[36m\]\u\[\e[39m\]\[\e[32m\]: \[\e[39m\]\[\e[33m\]\W\[\e[39m\]\[\e[31m\]$(__git_ps1 "(%s)")\[\e[0m\] \[\e[36m\]> \[\e[39m\]'
-# bash prompt that includes relative path to home dir.
-# export PS1='\[\e[36m\]\u\[\e[39m\]\[\e[32m\]: \[\e[39m\]\[\e[33m\]\w\[\e[39m\]\[\e[31m\]$(__git_ps1 "(%s)")\[\e[0m\] \[\e[36m\]> \[\e[39m\]'
 # bash prompt that includes path shortener.
 export PS1='\[\e[36m\]\u\[\e[39m\]\[\e[32m\]: \[\e[39m\]\[\e[33m\]$(_dir_chomp "$(pwd)" 5)\[\e[39m\]\[\e[31m\]$(__git_ps1 "(%s)")\[\e[0m\] \[\e[36m\]> \[\e[39m\]'
 
@@ -98,3 +91,4 @@ export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
 # tabtab source for packages
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
+. "$HOME/.cargo/env"
