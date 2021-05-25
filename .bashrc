@@ -4,6 +4,7 @@ source ~/bin/.git-prompt.sh
 # https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
 source ~/bin/.git-completion.bash
 
+export TERM=xterm-256color
 
 # Config git prompt
 export GIT_PS1_SHOWDIRTYSTATE=1
